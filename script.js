@@ -784,16 +784,18 @@ class intro {
 
     init() {
         this.introScreen.addEventListener('click', () => {
+            this.playSound(this.openSound);
+            if (window.musicManager) {
+                window.musicManager.startMusic();
+            }
+
             introScreen.classList.add('opening');
+
             setTimeout(() => {
                 sparkleConfetti.magicalShower(4000);
             }, 1200);
             setTimeout(() => {
                 mainContent.classList.add('visible');
-                this.playSound(this.openSound);
-                if (window.musicManager) {
-                    window.musicManager.startMusic();
-                }
             }, 800);
         });
     }
