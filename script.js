@@ -426,8 +426,8 @@ class EventDetailsManager {
     constructor() {
         this.eventDetails = {
             title: "Damaris Alexa's 7th Birthday Party",
-            start: "2025-11-02T10:00:00",
-            end: "2025-11-01T14:00:00",
+            start: "2025-11-09T10:00:00",
+            end: "2025-11-09T14:00:00",
             location: "Captain's Place (Private Pool and Events Place), 24XP+J63, Malvar, Batangas, Philippines",
             description: "Join us for an amazing birthday celebration with games, cake, and fun!"
         };
@@ -463,7 +463,7 @@ class EventDetailsManager {
 
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            initialDate: '2025-11-02',
+            initialDate: '2025-11-09',
             height: 'auto',
             dayHeaderFormat: { weekday: 'narrow' },
             headerToolbar: { left: 'title', center: '', right: '' },
