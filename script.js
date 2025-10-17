@@ -586,6 +586,9 @@ class StoryBook {
         const footerSection = document.getElementById('footer-section');
         footerSection.classList.add('visible');
 
+        const trademarkSection = document.getElementById('trademark');
+        trademarkSection.classList.add('visible');
+
         // console.log('Moving to party section...');
     }
 
