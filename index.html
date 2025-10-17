@@ -14,8 +14,9 @@
 
     <!-- Fonts and style-->
     <link rel="stylesheet" href="styles2.css">
-    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Quicksand:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Fullcalendarjs -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" rel="stylesheet">
@@ -24,6 +25,12 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+
+    <!-- For Sharing -->
+    <meta property="og:title" content="You're Invited to [Name]'s Celebration!">
+    <meta property="og:description" content="Join us for a day of joy and memories.">
+    <meta property="og:image" content="[preview-image.jpg]">
+    <meta property="og:type" content="website">
 </head>
 
 <body>
@@ -36,13 +43,17 @@
         </div>
     </div>
 
+    <div class="loading-screen" id="loadingScreen">
+        <img src="/images/loading.gif" alt="Loading..." class="loading-gif">
+    </div>
+
     <div id="mainContent" class="visible">
         <!-- Background Preset -->
         <div id="tsparticles"></div>
         <section id="banner-section">
             <div class="header-section">
                 <h1 class="animated-title">
-                    Kyline Chandria's 7<sup>th</sup> Celebration
+                    <span data-event="childName"></span>'s <span data-event="age"></span><sup>th</sup> Celebration
                 </h1>
                 <p class="subtitle">Watch the magic unfold...</p>
                 <div class="pulse-indicator">
@@ -57,7 +68,7 @@
                     <div class="envelope"></div>
                     <div class="letter" id="letter">
                         <div class="letter-content">
-                            <p>Join us for a magical celebration filled with joy, and sweet memories!</p>
+                            <p data-event="invitationMessage"></p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +76,7 @@
         </section>
 
         <!-- Story Book -->
-        <section id="story-section" class="visible">
+        <section id="story-section" class="">
             <div class="storybook-container">
                 <div class="story-card" id="storyCard">
                     <div class="story-content">
@@ -116,14 +127,14 @@
         <section class="gallery-section " id="gallery-section">
             <div class="gallery-container">
                 <div class="gallery-cover">
-                    <img src="/assets/story/first.png" alt="Birthday celebration">
+                    <img data-event-gallery-cover alt="Birthday celebration">
                     <div class="gallery-overlay"></div>
                 </div>
 
                 <div class="gallery-title">
-                    <span class="child-name">Kyline Chandria</span>
+                    <span class="child-name" data-event="childName"></span>
                     <span class="turning-text">is turning</span>
-                    <span class="age-number">7</span>
+                    <span class="age-number" data-event="age"></span>
                 </div>
             </div>
             <div>
@@ -142,30 +153,13 @@
             <div class="event-details-container">
                 <div class="calendar-section">
                     <div class="event-section-header">
-                        <svg class="event-section-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-                            fill="none" viewBox="0 0 24 24" id="Heart-Calendar--Streamline-Cyber">
-                            <path fill="#ffffff" d="M21.7999 5.6496H2.19995v17.64H21.7999v-17.64Z" stroke-width="1"></path>
-                            <path fill="#ffd5df" d="m17.88 12.98 -3.43 -3.92L12 11.02v7.84l5.88 -5.88Z" stroke-width="1">
-                            </path>
-                            <path fill="#ffd5df" d="M21.7999 2.69H2.19995v2.94H21.7999V2.69Z" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round"
-                                d="M21.7999 5.63H2.19995v17.64H21.7999V5.63Z" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round"
-                                d="M21.7999 2.69H2.19995v2.94H21.7999V2.69Z" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round"
-                                d="M7.09998 3.67001V0.730011" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" d="M16.9 3.67001V0.730011"
-                                stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round"
-                                d="m12 18.86 5.88 -5.88 -3.43 -3.92L12 11.02 9.55 9.06l-3.43 3.92L12 18.86Z"
-                                stroke-width="1"></path>
-                        </svg>
+                        <div data-icon="calendar"></div>
                         <h2>Mark Your Calendar</h2>
                     </div>
 
                     <div class="date-details">
                         <div class="date-info">
-                            <p>Sunday, November 09, 2025 <br> 10:00 AM - 2:00 PM</p>
+                            <p><span data-event="eventDateFull"></span> <br> <span data-event="eventTime"></span></p>
                         </div>
                     </div>
 
@@ -187,52 +181,24 @@
 
                 <div class="map-section">
                     <div class="event-section-header">
-                        <svg class="event-section-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-                            fill="none" viewBox="0 0 24 24" id="Location-Map--Streamline-Cyber">
-                            <path fill="#ffffff"
-                                d="M20.82 5.62998H16.9v-1.764L12 0.72998l-4.90003 3.136v1.764h-3.92L1.21997 23.27H22.78L20.82 5.62998Z"
-                                stroke-width="1"></path>
-                            <path fill="#ffd5df"
-                                d="M12 0.72998v3.43l1.96 1.274v1.96L12 8.56998V15.43l4.9 -7.35002v-4.214L12 0.72998Z"
-                                stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="M18.86 5.63h1.96l1.96 17.64H1.21997l1.96 -17.64h1.96" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="M1.90601 17.39H22.094" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="M17.8799 10.53h3.528" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="M2.59204 10.53h3.528" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="m6.61011 23.27 0.686 -10.29" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="m17.3901 23.27 -0.686 -10.29" stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="m12.0001 15.43 4.9 -7.35002v-4.214l-4.9 -3.136 -4.9 3.136v4.214l4.9 7.35002Z"
-                                stroke-width="1"></path>
-                            <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                d="M13.96 7.39403 12 8.57003l-1.96 -1.176v-1.96l1.96 -1.274 1.96 1.274v1.96Z"
-                                stroke-width="1"></path>
-                        </svg>
+                        <div data-icon="map"></div>
                         <h2>Party Location</h2>
                     </div>
 
                     <div class="date-details">
                         <div class="date-info">
-                            <p>Captain's Place (Private Pool and Events Place)<br> Malvar, Batangas</p>
+                            <p><span data-event="venueFull"></span><br> <span data-event="venueAddress"></span></p>
                         </div>
                     </div>
 
                     <div class="map-container">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4656.66708953913!2d121.1329733758458!3d14.04901398637461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6f0013a95c6d%3A0xbb25fb40d9416062!2sCaptain&#39;s%20Place%20(Private%20Pool%20and%20Events%20Place)!5e1!3m2!1sen!2sph!4v1757579424131!5m2!1sen!2sph"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade" title="Party Location Map">
+                        <iframe data-event-map width="100%" height="450" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Party Location Map">
                         </iframe>
                     </div>
 
                     <div class="landmark-details">
-                        <p>Nearby Landmarks: San Pedro 2, Chapel</p>
+                        <p>Nearby Landmarks: <span data-event="nearbyLandmarks"></span></p>
                     </div>
                 </div>
             </div>
@@ -242,32 +208,13 @@
         <section id="dress-code" class="">
             <div class="dress-code-container">
                 <div class="section-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24"
-                        id="Dress--Streamline-Cyber">
-                        <path fill="#ffffff"
-                            d="M12 5.63 9.06001 3.67l-2.94 1.96 2.45 5.88 -6.37 9.8 3.92 1.96H17.88l3.92 -1.96 -6.37 -9.8 2.45 -5.88 -2.94 -1.96L12 5.63Z"
-                            stroke-width="1"></path>
-                        <path fill="#ffd5df" d="m12 5.63 2.94 -1.96 2.94 1.96 -2.45 5.88 6.37 9.8 -3.92 1.96H12V5.63Z"
-                            stroke-width="1"></path>
-                        <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                            d="M12 5.63 9.06001 3.67l-2.94 1.96 2.45 5.88 -6.37 9.8 3.92 1.96H17.88l3.92 -1.96 -6.37 -9.8 2.45 -5.88 -2.94 -1.96L12 5.63Z"
-                            stroke-width="1"></path>
-                        <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                            d="M14.94 3.67V0.73" stroke-width="1"></path>
-                        <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                            d="M9.06 3.67V0.73" stroke-width="1"></path>
-                        <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                            d="M15.43 11.51 12 12l-3.42999 -0.49" stroke-width="1"></path>
-                    </svg>
+                    <div data-icon="dressCode"></div>
                     <h2>Dress Code</h2>
                 </div>
 
                 <div class="dresscode-notes" role="note" aria-label="Dress code details">
-                    <p>🩰 Dress code: Ballerina Chic! Whether it's a tutu, a pretty dress, ballet shoes, or simply your
-                        favorite pink or purple outfit — come ready to dance and celebrate!</p>
-                    <p>Feel free to accessorize with ribbons, bows, tiaras, or anything sparkly. Our theme colors are blush
-                        pink, lavender, cream, and gold — but most importantly, wear what makes you feel beautiful and
-                        comfortable!</p>
+                    <p data-event="dressCodeParagraph1"></p>
+                    <p data-event="dressCodeParagraph2"></p>
                 </div>
 
                 <div class="color-theme">
@@ -284,12 +231,12 @@
                         <div class="outfit-gallery">
                             <div class="outfit-card">
                                 <div class="outfit-image">
-                                    <img src="/assets/attire/women-attire.png" alt="Girls outfit option 1" />
+                                    <img data-outfit="women" alt="Girls outfit option 1" />
                                 </div>
                             </div>
                             <div class="outfit-card">
                                 <div class="outfit-image">
-                                    <img src="/assets/attire/men-attire.png" alt="Girls outfit option 2" />
+                                    <img data-outfit="men" alt="Girls outfit option 2" />
                                 </div>
                             </div>
                         </div>
@@ -303,49 +250,17 @@
             <div class="rsvp-container">
                 <div class="rsvp-card" id="rsvpCard">
                     <div class="rsvp-content">
-                        <!-- Ballet Shoe Icon -->
-                        <div class="rsvp-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24"
-                                id="Pen-2--Streamline-Cyber">
-                                <path fill="#ffffff"
-                                    d="M23 1 18.5 0.5 16 3 4.8 15.8 2 17 0.5 23.5 7 22l1.3 -2.7L21 8l2.5 -2.5L23 1Z"
-                                    stroke-width="1"></path>
-                                <path fill="#ffd5df" d="m23 1 -4.5 4.5 -18 18L7 22l1.3 -2.7L21 8l2.5 -2.5L23 1Z"
-                                    stroke-width="1"></path>
-                                <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                    d="M16 3 4.8 15.8 2 17 0.5 23.5 7 22l1.3 -2.7L21 8l-5 -5Z" stroke-width="1"></path>
-                                <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                    d="m4.69995 15.8 3.5 3.5" stroke-width="1"></path>
-                                <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                    d="M5 19 0.5 23.5" stroke-width="1"></path>
-                                <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                    d="M16 3 18.5 0.5 23 1l0.5 4.5L21 8" stroke-width="1"></path>
-                                <path stroke="#4b3b47" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                    d="M16 3 13.5 0.5l-7 10h-2" stroke-width="1"></path>
-                                <path stroke="#ffd5df" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                    d="M8.5 23.5h15" stroke-width="1"></path>
-                            </svg>
-                        </div>
+                        <div class="rsvp-icon" data-icon="rsvp"></div>
+                        <h2 class="rsvp-title" data-event="rsvpTitle"></h2>
+                        <p class="rsvp-subtitle" data-event="rsvpSubtitle"></p>
 
-                        <!-- Title -->
-                        <h2 class="rsvp-title">Save Your Spot at the Ballet! 🌟</h2>
-
-                        <!-- Subtitle -->
-                        <p class="rsvp-subtitle">
-                            Will you join us for Damaris Alexa's magical 7th birthday ballet celebration? We'd love to have
-                            you pirouette into this special day!
-                        </p>
-
-                        <!-- Google Form Container -->
                         <div class="google-form-container">
                             <div class="form-loading" id="formLoading">
                                 <div class="loading-spinner"></div>
                                 Loading RSVP form...
                             </div>
-                            <iframe class="form-iframe" id="rsvpForm"
-                                src="https://docs.google.com/forms/d/e/1FAIpQLSfVJDQGwyQ2Ce1TIaJsLjp-neMOTRsKmQECSKIUS49a6FuaMA/viewform?embedded=true"
-                                frameborder="0" marginheight="0" marginwidth="0" style="display: none;"
-                                title="Birthday Party RSVP Form">
+                            <iframe class="form-iframe" id="rsvpForm" frameborder="0" marginheight="0" marginwidth="0"
+                                style="display: none;" title="Birthday Party RSVP Form">
                                 Loading...
                             </iframe>
                         </div>
@@ -353,8 +268,7 @@
                         <!-- Fallback Button -->
                         <div class="form-fallback">
                             <p class="fallback-text">Form not loading? No worries!</p>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVJDQGwyQ2Ce1TIaJsLjp-neMOTRsKmQECSKIUS49a6FuaMA/viewform"
-                                target="_blank" rel="noopener noreferrer" class="form-btn">
+                            <a target="_blank" rel="noopener noreferrer" class="form-btn">
                                 Open RSVP Form
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -375,9 +289,11 @@
             <div class="guest-list-container">
                 <!-- Header -->
                 <div class="guest-list-header" id="guestListHeader">
+                    <div data-icon="guest"></div>
                     <h2 class="guest-list-title">Our Party Special Guests</h2>
                     <p class="guest-list-subtitle">
-                        Meet all the wonderful friends who will be joining Callista's magical 7th birthday celebration!
+                        Meet all the wonderful friends who will be joining <span data-event="childName"></span>'s
+                        magical 7th birthday celebration!
                     </p>
 
                     <!-- Mobile Check Button -->
@@ -392,123 +308,9 @@
 
                 <!-- Guest List Content -->
                 <div class="guest-list-content" id="guestListContent">
-                    <!-- Guest Cards Grid -->
-                    <div class="guest-cards-grid">
-
-                        <!-- Roses Card -->
-                        <div class="guest-card">
-                            <div class="guest-card-header">
-                                <div class="guest-card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-flower">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 1a4 4 0 0 1 4 4l-.002 .055l.03 -.018a3.97 3.97 0 0 1 2.79 -.455l.237 .056a3.97 3.97 0 0 1 2.412 1.865a4.01 
-                                    4.01 0 0 1 -1.455 5.461l-.068 .036l.071 .039a4.01 4.01 0 0 1 1.555 5.27l-.101 .186a3.97 3.97 0 0 1 -5.441 1.468l-.03 -.02l.002 
-                                    .057a4 4 0 0 1 -3.8 3.995l-.2 .005a4 4 0 0 1 -4 -4l.001 -.056l-.029 .019a3.97 3.97 0 0 1 -2.79 .456l-.236 -.056a3.97 3.97 0 0 1 
-                                    -2.413 -1.865a4.01 4.01 0 0 1 1.453 -5.46l.07 -.038l-.071 -.038a4.01 4.01 0 0 1 -1.555 -5.27l.1 -.187a3.97 3.97 0 0 1 5.444 -1.468l.026 
-                                    .018v-.055a4 4 0 0 1 3.8 -3.995zm0 8a3 3 0 1 0 0 6a3 3 0 0 0 0 -6" />
-                                    </svg>
-                                </div>
-                                <h3 class="guest-card-title">7 Roses</h3>
-                            </div>
-                            <ul class="guest-list">
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                            </ul>
-                        </div>
-
-                        <!-- Bills Card -->
-                        <div class="guest-card">
-                            <div class="guest-card-header">
-                                <div class="guest-card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-cash">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M7 15h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v3" />
-                                        <path
-                                            d="M7 9m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" />
-                                        <path d="M12 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                    </svg>
-                                </div>
-                                <h3 class="guest-card-title">7 Bills</h3>
-                            </div>
-                            <ul class="guest-list">
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                            </ul>
-                        </div>
-
-                        <!-- Balloons Card -->
-                        <div class="guest-card">
-                            <div class="guest-card-header">
-                                <div class="guest-card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="icon icon-tabler icons-tabler-filled icon-tabler-balloon">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M12 1a7 7 0 0 1 7 7c0 5.457 -3.028 10 -7 10c-3.9 0 -6.89 -4.379 -6.997 -9.703l-.003 -.297l.004 -.24a7 7 0 0 1 6.996 
-                                    -6.76zm0 4a1 1 0 0 0 0 2l.117 .007a1 1 0 0 1 .883 .993l.007 .117a1 1 0 0 0 1.993 -.117a3 3 0 0 0 -3 -3z" />
-                                        <path
-                                            d="M12 16a1 1 0 0 1 .993 .883l.007 .117v1a3 3 0 0 1 -2.824 2.995l-.176 .005h-3a1 1 0 0 0 -.993 .883l-.007 .117a1 1 0 0 1 
-                                    -2 0a3 3 0 0 1 2.824 -2.995l.176 -.005h3a1 1 0 0 0 .993 -.883l.007 -.117v-1a1 1 0 0 1 1 -1z" />
-                                    </svg>
-                                </div>
-                                <h3 class="guest-card-title">7 Balloons</h3>
-                            </div>
-                            <ul class="guest-list">
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                            </ul>
-                        </div>
-
-                        <!-- Gifts -->
-                        <div class="guest-card">
-                            <div class="guest-card-header">
-                                <div class="guest-card-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="icon icon-tabler icons-tabler-filled icon-tabler-gift">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M11 14v8h-4a3 3 0 0 1 -3 -3v-4a1 1 0 0 1 1 -1h6zm8 0a1 1 0 0 1 1 1v4a3 3 0 0 1 -3 3h-4v-8h6zm-2.5 
-                                    -12a3.5 3.5 0 0 1 3.163 5h.337a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-7v-5h-2v5h-7a2 2 0 0 1 -2 -2v-1a2 2 0 0 1 2 
-                                    -2h.337a3.486 3.486 0 0 1 -.337 -1.5c0 -1.933 1.567 -3.5 3.483 -3.5c1.755 -.03 3.312 1.092 4.381 2.934l.136 
-                                    .243c1.033 -1.914 2.56 -3.114 4.291 -3.175l.209 -.002zm-9 2a1.5 1.5 0 0 0 0 3h3.143c-.741 -1.905 -1.949 -3.02 
-                                    -3.143 -3zm8.983 0c-1.18 -.02 -2.385 1.096 -3.126 3h3.143a1.5 1.5 0 1 0 -.017 -3z" />
-                                    </svg>
-                                </div>
-                                <h3 class="guest-card-title">7 Gifts</h3>
-                            </div>
-                            <ul class="guest-list">
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                                <li>TBD</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Thank You Message -->
+                    <div class="guest-cards-grid" id="guestCardsGrid"></div>
                     <div class="thank-you-message" id="thankYouMessage">
-                        <p>Every guest is part of this magical story. Thank you for celebrating with us! ✨🎉</p>
+                        <p data-event="guestListThankYou"></p>
                     </div>
                 </div>
             </div>
@@ -558,8 +360,9 @@
 
             <!-- Main Message -->
             <div class="footer-main-message">
-                <h3>With Love, Callista</h3>
-                <p class="footer-submessage">Thank you for making my 7th birthday dreams come true! ✨</p>
+                <h3>With Love, <span data-event="childName"></span></h3>
+                <p class="footer-submessage">Thank you for making my <span data-event="age"></span>th birthday dreams
+                    come true! ✨</p>
             </div>
 
             <!-- Contact Information -->
@@ -571,7 +374,8 @@
                             d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                     Questions? Contact
-                    <a href="tel:+1234567890" class="contact-link">Mom & Dad at (contact Details)</a>
+                    <a href="tel:+1234567890" class="contact-link">Mom & Dad at <span
+                            data-event="parentContact"></span></a>
                 </p>
             </div>
 
@@ -583,7 +387,7 @@
                     <path
                         d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z" />
                 </svg>
-                for Kyline Chandria's magical celebration
+                for <span data-event="childName"></span>'s magical celebration
             </p>
         </div>
     </footer>
