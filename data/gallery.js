@@ -23,5 +23,33 @@ export const galleryImages = [
     {
         image: "/assets/gallery/sixth.jpg",
         alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9135.jpg",
+        alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9155.jpg",
+        alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9237.jpg",
+        alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9327.jpg",
+        alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9412.jpg",
+        alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9518.jpg",
+        alt: "Sixth Birthday"
+    },
+    {
+        image: "/assets/gallery/3RDA9594.jpg",
+        alt: "Sixth Birthday"
     }
 ];
