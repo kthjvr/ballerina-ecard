@@ -2031,11 +2031,6 @@ html {
     transform: translateY(0);
 }
 
-.guest-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
 .guest-card::before {
     content: '';
     position: absolute;
@@ -2125,10 +2120,6 @@ html {
     position: absolute;
     left: 0;
     opacity: 0.7;
-}
-
-.guest-list li:hover {
-    color: var(--color-primary);
 }
 
 .thank-you-message {
