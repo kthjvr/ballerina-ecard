@@ -35,7 +35,7 @@ export const EVENT_CONFIG = {
     },
 
     // For gallery cover
-    galleryCoverImage: "/assets/story/first.png",
+    galleryCoverImage: "/assets/gallery/cover.jpg",
 
     // For dress code
     dressCodeParagraph1: "🩰 Dress code: Ballerina Chic! Whether it's a tutu, a pretty dress, ballet shoes, or simply your favorite pink or purple outfit — come ready to dance and celebrate!",

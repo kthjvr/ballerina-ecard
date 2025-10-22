@@ -1,27 +1,27 @@
 // For polaroid content (UPDATE THIS AS NEEDED)
 export const galleryImages = [
     {
-        image: "/assets/story/first.png",
+        image: "/assets/gallery/first.jpg",
         alt: "First Birthday"
     },
     {
-        image: "/assets/story/second.png",
+        image: "/assets/gallery/second.jpg",
         alt: "Second Birthday"
     },
     {
-        image: "/assets/story/third.png",
+        image: "/assets/gallery/third.jpg",
         alt: "Third Birthday"
     },
     {
-        image: "/assets/story/fourth.png",
+        image: "/assets/gallery/fourth.jpg",
         alt: "Fourth Birthday"
     },
     {
-        image: "/assets/story/fifth.png",
+        image: "/assets/gallery/fifth.jpg",
         alt: "Fifth Birthday"
     },
     {
-        image: "/assets/story/sixth.png",
+        image: "/assets/gallery/sixth.jpg",
         alt: "Sixth Birthday"
     }
 ];
