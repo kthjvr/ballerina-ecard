@@ -13,18 +13,18 @@ export const EVENT_CONFIG = {
 
     // Event Details
     calendarStart: "2025-11-19T10:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
-    calendarEnd: "2025-11-19T14:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
-    venue: "Captain's Place",
-    venueFull: "Captain's Place (Private Pool and Events Place)",
+    calendarEnd: "2025-11-09T14:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
+    venue: "Nonette's Green Leaf Garden Resort",
+    venueFull: "Nonette's Green Leaf Garden Resort",
     venueAddress: "Malvar, Batangas",
-    venueAddressFull: "24XP+J63, Malvar, Batangas, Philippines",
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4656.66708953913!2d121.1329733758458!3d14.04901398637461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6f0013a95c6d%3A0xbb25fb40d9416062!2sCaptain's%20Place!5e1!3m2!1sen!2sph!4v1757579424131!5m2!1sen!2sph",
-    nearbyLandmarks: "San Pedro 2, Chapel",
+    venueAddressFull: "W5J2+7V3, Bolbok, Lipa City, Batangas, Philippines",
+    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3872.475297025878!2d121.15194350000002!3d13.9302817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6cb421414f1d%3A0x46bf47272446e579!2sGreen%20Leaf!5e0!3m2!1sen!2sph!4v1761127397455!5m2!1sen!2sph",
+    nearbyLandmarks: "---",
 
     // Contact
     googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfVJDQGwyQ2Ce1TIaJsLjp-neMOTRsKmQECSKIUS49a6FuaMA/viewform",
-    parentContact: "(contact Details)",
-    parentPhone: "+1234567890",
+    parentContact: "Mommy Carol",
+    parentPhone: "(0915-0860435)",
 
     // Theme colors
     themeColors: {
@@ -38,8 +38,8 @@ export const EVENT_CONFIG = {
     galleryCoverImage: "/assets/gallery/cover.jpg",
 
     // For dress code
-    dressCodeParagraph1: "🩰 Dress code: Ballerina Chic! Whether it's a tutu, a pretty dress, ballet shoes, or simply your favorite pink or purple outfit — come ready to dance and celebrate!",
-    dressCodeParagraph2: "Feel free to accessorize with ribbons, bows, tiaras, or anything sparkly. Our theme colors are blush pink, lavender, cream, and gold — but most importantly, wear what makes you feel beautiful and comfortable!",
+    dressCodeParagraph1: "🌸 Dress code: Any Pastel Color! Think soft hues of pink, lavender, mint, sky blue, or butter yellow — gentle tones that bring out a dreamy and elegant vibe. Whether it’s a flowy dress, a crisp shirt, or coordinated separates, pastel is the way to go!",
+    dressCodeParagraph2: "✨ Feel free to mix and match your favorite shades or keep it simple with one soft tone. Add subtle accessories like pearls, ribbons, or florals to complete your look. The goal is to keep it light, fresh, and effortlessly charming!",
     outfitImages: {
         women: "/assets/attire/women-attire.png",
         men: "/assets/attire/men-attire.png"
