@@ -12,8 +12,8 @@ export const EVENT_CONFIG = {
     invitationMessage: "Join us for a magical celebration filled with joy, and sweet memories!",
 
     // Event Details
-    calendarStart: "2025-11-09T10:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
-    calendarEnd: "2025-11-09T14:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
+    calendarStart: "2025-11-09T14:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
+    calendarEnd: "2025-11-09T18:00:00", //YYYY-MM-DD Time in 24H T(HR:MM:SS)
     venue: "Nonette's Green Leaf Garden Resort",
     venueFull: "Nonette's Green Leaf Garden Resort",
     venueAddress: "Malvar, Batangas",
@@ -29,8 +29,8 @@ export const EVENT_CONFIG = {
     // Theme colors
     themeColors: {
         primary: "#ffd5df",
-        secondary: "#f5e9f0",
-        quaternary: "#f5d5e3",
+        secondary: "#e3d4f3",
+        quaternary: "#ffd5df",
         accent: "#FFD700"
     },
 
