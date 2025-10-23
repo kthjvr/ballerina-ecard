@@ -125,36 +125,36 @@ class EnvelopeAnimation {
     }
 }
 
-class ParticlesBackground {
-    constructor(containerId) {
-        this.containerId = containerId;
-        this.init();
-    }
+// class ParticlesBackground {
+//     constructor(containerId) {
+//         this.containerId = containerId;
+//         this.init();
+//     }
 
-    init() {
-        tsParticles.load(this.containerId, {
-            fpsLimit: 30,
-            particles: {
-                color: { value: "#ffd5df" },
-                move: {
-                    enable: true,
-                    speed: 0.5,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    outModes: { default: "out" }
-                },
-                number: { value: 100 },
-                opacity: {
-                    value: { min: 0.1, max: 1 },
-                    animation: { enable: true, speed: 1, minimumValue: 0.1 }
-                },
-                shape: { type: "circle" },
-                size: { value: { min: 0.5, max: 5 } }
-            }
-        });
-    }
-}
+//     init() {
+//         tsParticles.load(this.containerId, {
+//             fpsLimit: 30,
+//             particles: {
+//                 color: { value: "#ffd5df" },
+//                 move: {
+//                     enable: true,
+//                     speed: 0.5,
+//                     direction: "none",
+//                     random: true,
+//                     straight: false,
+//                     outModes: { default: "out" }
+//                 },
+//                 number: { value: 50 },
+//                 opacity: {
+//                     value: { min: 0.5, max: 1 },
+//                     animation: { enable: true, speed: 3, minimumValue: 0.1 }
+//                 },
+//                 shape: { type: "circle" },
+//                 size: { value: { min: 1, max: 5 } }
+//             }
+//         });
+//     }
+// }
 
 class StoryBook {
     constructor() {
@@ -289,6 +289,7 @@ class StoryBook {
 
             elements.storyImage.alt = `Story illustration ${this.currentStory + 1}`;
             elements.storyText.textContent = story.text;
+            elements.storyImage.loading = "lazy";
             document.getElementById('story-section').scrollIntoView({ behavior: 'smooth', block: 'end' });
 
             this.updateIndicators();
@@ -400,6 +401,7 @@ class PolaroidCarousel {
             const img = document.createElement('img');
             img.src = item.image;
             img.alt = item.alt;
+            img.loading = "lazy";
 
             // const caption = document.createElement('div');
             // caption.className = 'caption';
@@ -918,7 +920,7 @@ class SparkleConfetti {
         }
     }
 
-    magicalShower(duration = 800000) {
+    magicalShower(duration = 8000) {
         const end = Date.now() + duration;
         const colors = ['#FFD700', '#FFFFFF', '#FFF8DC', '#FFFACD'];
 
@@ -954,11 +956,12 @@ function initializeApp() {
 
     new initEventDetails();
     new initGuestList();
+    // new lazyLoadSections();
 
     const envelopeAnimation = new EnvelopeAnimation('envelope', 1500);
     window.envelopeAnimation = envelopeAnimation;
 
-    new ParticlesBackground('tsparticles');
+    // new ParticlesBackground('tsparticles');
     new StoryBook();
     new PolaroidCarousel('carousel', galleryImages);
     new EventDetailsManager();
