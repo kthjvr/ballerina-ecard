@@ -735,13 +735,37 @@ class MusicManager {
         this.musicBtn = document.getElementById('musicBtn');
         this.bgMusic = document.getElementById('bgMusic');
         this.isMusicPlaying = false;
+        this.isInitialized = false;
 
         this.init();
     }
 
     init() {
-        if (this.musicBtn) {
-            this.musicBtn.addEventListener('click', this.toggleMusic.bind(this), { passive: true });
+        if (this.musicBtn && this.bgMusic) {
+            this.musicBtn.replaceWith(this.musicBtn.cloneNode(true));
+            this.musicBtn = document.getElementById('musicBtn');
+            
+            this.musicBtn.addEventListener('click', () => this.toggleMusic());
+            
+            this.bgMusic.load();
+            
+            this.bgMusic.addEventListener('canplaythrough', () => {
+                this.isInitialized = true;
+            }, { once: true });
+
+            this.bgMusic.addEventListener('error', (e) => {
+                console.error('Audio loading error:', e);
+            });
+
+            this.bgMusic.addEventListener('pause', () => {
+                this.musicBtn.classList.remove('playing');
+                this.isMusicPlaying = false;
+            });
+
+            this.bgMusic.addEventListener('play', () => {
+                this.musicBtn.classList.add('playing');
+                this.isMusicPlaying = true;
+            });
         }
     }
 
@@ -758,14 +782,24 @@ class MusicManager {
     startMusic() {
         if (!this.bgMusic || !this.musicBtn) return;
 
-        this.bgMusic.play()
-            .then(() => {
-                this.musicBtn.classList.add('playing');
-                this.isMusicPlaying = true;
-            })
-            .catch(() => {
-                console.log('Auto-play prevented. User interaction required.');
-            });
+        if (!this.isInitialized) {
+            this.bgMusic.load();
+        }
+
+        const playPromise = this.bgMusic.play();
+        
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    this.musicBtn.classList.add('playing');
+                    this.isMusicPlaying = true;
+                })
+                .catch((error) => {
+                    console.log('Playback prevented:', error.message);
+                    this.musicBtn.classList.remove('playing');
+                    this.isMusicPlaying = false;
+                });
+        }
     }
 
     pauseMusic() {
@@ -778,9 +812,12 @@ class MusicManager {
 
     playSound(audioElement) {
         if (audioElement) {
-            audioElement.play().catch(() => {
-                console.log('Audio play failed - user interaction required');
-            });
+            const playPromise = audioElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch((error) => {
+                    console.log('Sound play failed:', error.message);
+                });
+            }
         }
     }
 
@@ -913,32 +950,22 @@ const sparkleConfetti = new SparkleConfetti();
 
 function initializeApp() {
     const musicManager = new MusicManager();
+    window.musicManager = musicManager;
 
     new initEventDetails();
-
     new initGuestList();
 
     const envelopeAnimation = new EnvelopeAnimation('envelope', 1500);
     window.envelopeAnimation = envelopeAnimation;
 
     new ParticlesBackground('tsparticles');
-
     new StoryBook();
-
     new PolaroidCarousel('carousel', galleryImages);
-
     new EventDetailsManager();
-
     new RSVPManager();
-
     new GuestListManager();
-
-    new MusicManager();
-
+        
     new intro();
-
-    // Make managers globally accessible
-    window.musicManager = musicManager;
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp);
