@@ -796,7 +796,8 @@ class intro {
         this.introScreen = document.getElementById('introScreen');
         this.loadingScreen = document.getElementById('loadingScreen');
         this.mainContent = document.getElementById('mainContent');
-        this.minLoadingTime = 2000;
+        this.imagesLoaded = false;
+        this.minLoadingTime = 4000;
         this.loadingStartTime = null;
 
         this.init();
@@ -812,7 +813,36 @@ class intro {
             this.loadingScreen.classList.add('active');
             this.loadingStartTime = Date.now();
 
+            this.checkAllImagesLoaded();
+        });
+    }
+
+    checkAllImagesLoaded() {
+        const images = Array.from(this.mainContent.querySelectorAll('img'));
+
+        if (images.length === 0) {
             this.handleLoadingComplete();
+            return;
+        }
+
+        let loadedCount = 0;
+        const totalImages = images.length;
+
+        const imageLoadHandler = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                this.imagesLoaded = true;
+                this.handleLoadingComplete();
+            }
+        };
+
+        images.forEach(img => {
+            if (img.complete && img.naturalHeight !== 0) {
+                imageLoadHandler();
+            } else {
+                img.addEventListener('load', imageLoadHandler);
+                img.addEventListener('error', imageLoadHandler);
+            }
         });
     }
 
@@ -824,16 +854,21 @@ class intro {
             this.loadingScreen.classList.add('fade-out');
             setTimeout(() => {
                 this.mainContent.classList.add('visible');
-                
-                if (window.sparkleConfetti) {
-                    window.sparkleConfetti.magicalShower(4000);
-                }
+                sparkleConfetti.magicalShower(4000);
 
                 if (window.envelopeAnimation) {
                     window.envelopeAnimation.open();
                 }
             }, 1000);
         }, remainingTime);
+    }
+
+    playSound(audioElement) {
+        if (audioElement) {
+            audioElement.play().catch(() => {
+                console.log('Audio play failed - user interaction required');
+            });
+        }
     }
 }
 
