@@ -80,14 +80,16 @@ body {
     line-height: 1.6;
     position: relative;
 }
-body::before {
+
+body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   background-image: 
-      radial-gradient(4px 4px at 40% 20%, #FFD6E0, transparent),
-      radial-gradient(3px 3px at 70% 80%, #C5A3FF, transparent);
+      radial-gradient(6px 6px at 40% 20%, #FFD6E0, transparent),
+      radial-gradient(4px 4px at 50% 60%, #C5A3FF, transparent),
+      radial-gradient(4px 4px at 70% 80%, var(--color-quaternary), transparent);
   background-size: 250px 250px;
   animation: floatingParticles 8s ease-in-out infinite;
   animation-delay: 3s;
