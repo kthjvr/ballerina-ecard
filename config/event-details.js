@@ -41,8 +41,8 @@ export const EVENT_CONFIG = {
     dressCodeParagraph1: "🌸 Dress code: Any Pastel Color! Think soft hues of pink, lavender, mint, sky blue, or butter yellow — gentle tones that bring out a dreamy and elegant vibe. Whether it’s a flowy dress, a crisp shirt, or coordinated separates, pastel is the way to go!",
     dressCodeParagraph2: "✨ Feel free to mix and match your favorite shades or keep it simple with one soft tone. Add subtle accessories like pearls, ribbons, or florals to complete your look. The goal is to keep it light, fresh, and effortlessly charming!",
     outfitImages: {
-        women: "/assets/attire/women-attire.png",
-        men: "/assets/attire/men-attire.png"
+        women: "https://ik.imagekit.io/e3wiv79bq/Ecard/women-attire.png",
+        men: "https://ik.imagekit.io/e3wiv79bq/Ecard/men-attire.png"
     },
 
     // For rsvp

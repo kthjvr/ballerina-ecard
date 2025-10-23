@@ -29,12 +29,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
+    <link rel="preload" as="image" href="https://ik.imagekit.io/e3wiv79bq/Ecard/seal.png">
+    <link rel="preload" as="image" href="https://ik.imagekit.io/e3wiv79bq/Ecard/ballerina-shoe.png">
+    <link rel="preload" as="image" href="/assets/loading.gif">
 
     <!-- Fonts and style-->
     <link rel="stylesheet" href="styles2.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Quicksand:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Fullcalendarjs -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" rel="stylesheet">
@@ -42,10 +43,10 @@
 
 <body>
     <!-- Intro Screen -->
-    <div class="intro-screen" id="introScreen">
+    <div class="intro-screen" id="introScreen" >
         <div class="envelope-wrapper">
             <div class="flap-left"></div>
-            <img src="/assets/icons/seal.png" alt="Center Image" class="center-image">
+            <img src="https://ik.imagekit.io/e3wiv79bq/Ecard/seal.png" alt="Center Image" class="center-image">
             <div class="flap-right"></div>
         </div>
     </div>
@@ -56,7 +57,7 @@
 
     <div id="mainContent" class="visible">
         <!-- Background Preset -->
-        <div id="tsparticles"></div>
+
         <section id="banner-section">
             <div class="header-section">
                 <h1 class="animated-title">
@@ -64,7 +65,7 @@
                 </h1>
                 <p class="subtitle">Watch the magic unfold...</p>
                 <div class="pulse-indicator">
-                    <img src="/assets/icons/ballerina-shoe.png" alt="Ballerina Shoe" class="pulse-icon">
+                    <img src="https://ik.imagekit.io/e3wiv79bq/Ecard/ballerina-shoe.png" alt="Ballerina Shoe" class="pulse-icon" loading="lazy">
                 </div>
             </div>
 
@@ -134,7 +135,7 @@
         <section class="gallery-section " id="gallery-section">
             <div class="gallery-container">
                 <div class="gallery-cover">
-                    <img data-event-gallery-cover alt="Birthday celebration">
+                    <img data-event-gallery-cover alt="Birthday celebration" loading="lazy">
                     <div class="gallery-overlay"></div>
                 </div>
 
@@ -238,12 +239,12 @@
                         <div class="outfit-gallery">
                             <div class="outfit-card">
                                 <div class="outfit-image">
-                                    <img data-outfit="women" alt="Girls outfit option 1" />
+                                    <img data-outfit="women" alt="Girls outfit option 1" loading="lazy"/>
                                 </div>
                             </div>
                             <div class="outfit-card">
                                 <div class="outfit-image">
-                                    <img data-outfit="men" alt="Girls outfit option 2" />
+                                    <img data-outfit="men" alt="Girls outfit option 2" loading="lazy"/>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +419,6 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js" defer></script>
     <script type="module" src="script.js" defer></script>
 

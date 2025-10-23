@@ -125,37 +125,6 @@ class EnvelopeAnimation {
     }
 }
 
-// class ParticlesBackground {
-//     constructor(containerId) {
-//         this.containerId = containerId;
-//         this.init();
-//     }
-
-//     init() {
-//         tsParticles.load(this.containerId, {
-//             fpsLimit: 30,
-//             particles: {
-//                 color: { value: "#ffd5df" },
-//                 move: {
-//                     enable: true,
-//                     speed: 0.5,
-//                     direction: "none",
-//                     random: true,
-//                     straight: false,
-//                     outModes: { default: "out" }
-//                 },
-//                 number: { value: 50 },
-//                 opacity: {
-//                     value: { min: 0.5, max: 1 },
-//                     animation: { enable: true, speed: 3, minimumValue: 0.1 }
-//                 },
-//                 shape: { type: "circle" },
-//                 size: { value: { min: 1, max: 5 } }
-//             }
-//         });
-//     }
-// }
-
 class StoryBook {
     constructor() {
         this.stories = this.stories = storyBookData;
@@ -836,7 +805,7 @@ class intro {
         this.loadingScreen = document.getElementById('loadingScreen');
         this.mainContent = document.getElementById('mainContent');
         this.imagesLoaded = false;
-        this.minLoadingTime = 4000;
+        this.minLoadingTime = 2500;
         this.loadingStartTime = null;
 
         this.init();
@@ -857,33 +826,47 @@ class intro {
     }
 
     checkAllImagesLoaded() {
-        const images = Array.from(this.mainContent.querySelectorAll('img'));
+        // Delay the check slightly to ensure DOM is populated
+        requestAnimationFrame(() => {
+            const images = Array.from(this.mainContent.querySelectorAll('img:not([loading="lazy"])'));
+            console.log('Images found:', images.length);
 
-        if (images.length === 0) {
-            this.handleLoadingComplete();
-            return;
-        }
-
-        let loadedCount = 0;
-        const totalImages = images.length;
-
-        const imageLoadHandler = () => {
-            loadedCount++;
-            if (loadedCount === totalImages) {
-                this.imagesLoaded = true;
+            if (images.length === 0) {
                 this.handleLoadingComplete();
+                return;
             }
-        };
 
-        images.forEach(img => {
-            if (img.complete && img.naturalHeight !== 0) {
-                imageLoadHandler();
-            } else {
-                img.addEventListener('load', imageLoadHandler);
-                img.addEventListener('error', imageLoadHandler);
-            }
+            let loadedCount = 0;
+            const totalImages = images.length;
+            let alreadyLoaded = 0;
+
+            const imageLoadHandler = () => {
+                loadedCount++;
+                if (loadedCount === totalImages) {
+                    this.imagesLoaded = true;
+                    this.handleLoadingComplete();
+                }
+            };
+
+            images.forEach(img => {
+                if (img.complete && img.naturalHeight !== 0) {
+                    alreadyLoaded++;
+                    imageLoadHandler();
+                } else {
+                    img.addEventListener('load', imageLoadHandler, { once: true });
+                    img.addEventListener('error', imageLoadHandler, { once: true });
+                }
+            });
+
+            setTimeout(() => {
+                if (!this.imagesLoaded) {
+                    console.warn('Timeout reached — forcing completion.');
+                    this.handleLoadingComplete();
+                }
+            }, 5000);
         });
     }
+
 
     handleLoadingComplete() {
         const elapsedTime = Date.now() - this.loadingStartTime;
@@ -956,12 +939,10 @@ function initializeApp() {
 
     new initEventDetails();
     new initGuestList();
-    // new lazyLoadSections();
 
     const envelopeAnimation = new EnvelopeAnimation('envelope', 1500);
     window.envelopeAnimation = envelopeAnimation;
 
-    // new ParticlesBackground('tsparticles');
     new StoryBook();
     new PolaroidCarousel('carousel', galleryImages);
     new EventDetailsManager();
